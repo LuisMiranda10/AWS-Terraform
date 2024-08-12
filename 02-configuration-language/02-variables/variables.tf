@@ -1,0 +1,60 @@
+variable "aws_region" {
+    type = string
+    description = ""
+    default = "sa-east-1"
+
+    validation {
+      condition = var.aws_region == "sa-east-1"
+      error_message = "Wrong region"
+    }
+}
+
+variable "aws_profile"{
+    type = string
+    description = ""
+    default = "tf_LuisMiranda"
+}
+
+variable "tags" {
+    type = map(string)
+    description = ""
+    default = {
+        "my-tag-db-aws" = "tf-train"
+        "CreateAt" = "2024-08-07"
+    }
+}
+
+variable "dynamodb_field_list" {
+    type = list(string)
+    description = ""
+    default = [ "UserID", "GameTitle" ]
+}
+
+variable "database_config" {
+    type = object({
+        table_name = string
+        read_capacity = optional(number, 3)
+        write_capacity = optional(number , 3)
+        deletion_protection = optional(bool, false)
+        hash_key = object({
+          name = string
+          type = string
+        })
+        range_key = object({
+          name = string
+          type = string
+        })
+    })
+    description = ""
+    default = {
+      table_name = "GameScores"
+      hash_key = {
+          name = "UserId"
+          type = "S"
+        }
+      range_key = {
+          name = "GameTitle"
+          type = "S"
+        }
+    }
+}
