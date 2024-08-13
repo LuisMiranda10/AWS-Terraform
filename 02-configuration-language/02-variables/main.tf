@@ -26,3 +26,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     "Fields" = join("_", var.dynamodb_field_list)
   })
 }
+
+resource "aws_vpc" "main" {
+  cidr_block = var.cidr_block
+}

@@ -1,11 +1,16 @@
+variable "environment" {
+  type = string
+  description = ""
+} 
+
 variable "aws_region" {
     type = string
     description = ""
-    default = "sa-east-1"
+    # default = "sa-east-1"
 
     validation {
       condition = var.aws_region == "sa-east-1"
-      error_message = "Wrong region"
+      error_message = "Only the sa-east-1 region is allowed" 
     }
 }
 
@@ -57,4 +62,11 @@ variable "database_config" {
           type = "S"
         }
     }
+}
+
+variable "cidr_block" {
+  type = string
+  description = ""
+  default = "10.0.0.0/16"
+  sensitive = true
 }
