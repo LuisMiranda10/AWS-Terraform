@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMusic</title>
+    <style>
+        body {
+            background-color: #000000; /* Fundo preto */
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para garantir que a animação não crie barras de rolagem */
+        }
+
+        .app-bar {
+            background-color: #800080; /* Cor roxa */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            position: relative;
+        }
+
+        .qr-code {
+            width: 300px;
+            height: 300px;
+            z-index: 1;
+        }
+
+        /* Emojis de música */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-20px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .emoji-1 { top: 10%; left: 20%; animation-delay: 0s; }
+        .emoji-2 { top: 20%; left: 60%; animation-delay: 1s; }
+        .emoji-3 { top: 50%; left: 30%; animation-delay: 2s; }
+        .emoji-4 { top: 70%; left: 80%; animation-delay: 3s; }
+        .emoji-5 { top: 80%; left: 40%; animation-delay: 4s; }
+        .emoji-6 { top: 30%; left: 70%; animation-delay: 5s; }
+        .emoji-7 { top: 40%; left: 50%; animation-delay: 6s; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333333;
+            color: #ffffff;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-bar">
+        <img src="https://mybuck-terraform-s3.s3.sa-east-1.amazonaws.com/LogoMyMusic.png" alt="MyMusic Logo" class="logo">
+        <h1>Bem vindo ao site do MyMusic, aponte a camera para o QR CODE e venha curtir música com nós</h1>
+    </div>
+
+    <div class="qr-container">
+        <img src="https://mybuck-terraform-s3.s3.sa-east-1.amazonaws.com/qrCode.png" alt="QR Code" class="qr-code">
+        <div class="emoji emoji-1">🎵</div>
+        <div class="emoji emoji-2">🎶</div>
+        <div class="emoji emoji-3">🎧</div>
+        <div class="emoji emoji-4">🎤</div>
+        <div class="emoji emoji-5">🎼</div>
+        <div class="emoji emoji-6">🎷</div>
+        <div class="emoji emoji-7">🎸</div>
+    </div>
+
+    <footer>
+        <p>This site was made by Luis Miranda, a contributor to the MyMusic group.</p>
+    </footer>
+</body>
+</html>
