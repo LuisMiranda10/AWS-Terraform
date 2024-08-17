@@ -31,31 +31,31 @@ resource "aws_s3_bucket_acl" "example" {
 
 resource "aws_s3_object" "index" {
   bucket = aws_s3_bucket.mybucket.id
-  key = "index.html"
-  source = "my_music_site/index.html"
-  acl = "public-read"
-  content_type = "text/html"
+  key = var.index_config.key_name
+  source = var.index_config.source_name
+  acl = var.index_config.acl
+  content_type = var.index_config.content_type
 }
 
 resource "aws_s3_object" "logo" {
   bucket = aws_s3_bucket.mybucket.id
-  key = "LogoMyMusic.png"
-  source = "my_music_site/LogoMyMusic.png"
-  acl = "public-read"
+  key = var.logo_config.key_name
+  source = var.logo_config.source_name
+  acl = var.logo_config.acl
 }
 
 resource "aws_s3_object" "qrCode" {
   bucket = aws_s3_bucket.mybucket.id
-  key = "qrCode.png"
-  source = "my_music_site/QR-Code.png"
-  acl = "public-read"
+  key = var.qrCode_config.key_name
+  source = var.qrCode_config.source_name
+  acl = var.qrCode_config.acl
 }
 
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.mybucket.id
 
   index_document {
-    suffix = "index.html"
+    suffix = var.website_document
   }
   depends_on = [ aws_s3_bucket_acl.example ]
 }
